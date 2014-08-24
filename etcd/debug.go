@@ -5,20 +5,21 @@ import (
 	"io/ioutil"
 	"log"
 	"strings"
+	stdlog "github.com/joefitzgerald/standardlog"
 )
 
 var logger *etcdLogger
 
-func SetLogger(l *log.Logger) {
+func SetLogger(l stdlog.Logger) {
 	logger = &etcdLogger{l}
 }
 
-func GetLogger() *log.Logger {
+func GetLogger() stdlog.Logger {
 	return logger.log
 }
 
 type etcdLogger struct {
-	log *log.Logger
+	log		stdlog.Logger
 }
 
 func (p *etcdLogger) Debug(args ...interface{}) {
